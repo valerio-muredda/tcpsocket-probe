@@ -18,7 +18,7 @@ spec:
       containers:
         - name: websocket-prober
           # Replace with your actual image stream tag and namespace
-          image: image-registry.openshift-image-registry.svc:5000/test/websocket-probe:latest
+          image: image-registry.openshift-image-registry.svc:5000/test/websocket-probe-git:latest
           env:
             - name: TARGET_WS_SERVICE
               # IMPORTANT: Replace with your actual WebSocket service URL
