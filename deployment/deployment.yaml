@@ -1,0 +1,47 @@
+# websocket-probe-deployment.yaml
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: websocket-probe
+  namespace: test # Namespace where your WebSocket app is running
+  labels:
+    app: websocket-probe
+spec:
+  replicas: 1
+  selector:
+    app: websocket-probe
+  template:
+    metadata:
+      labels:
+        app: websocket-probe
+    spec:
+      containers:
+        - name: websocket-prober
+          # Replace with your actual image stream tag and namespace
+          image: image-registry.openshift-image-registry.svc:5000/test/websocket-probe:latest
+          env:
+            - name: TARGET_WS_SERVICE
+              # IMPORTANT: Replace with your actual WebSocket service URL
+              # Format: ws://<service-name>.<namespace>.svc.cluster.local:<port>/<path>
+              # Example: ws://my-chat-app.my-project.svc.cluster.local:8080/websocket
+              value: "ws://your-websocket-app.your-project.svc.cluster.local:8080/ws"
+            - name: INTERVAL
+              value: "10" # Probe every 10 seconds
+            - name: TIMEOUT
+              value: "5" # Connection timeout for websocat
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+      restartPolicy: Always
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange:
+        from:
+          kind: ImageStreamTag
+          name: websocket-probe:latest
+          namespace: test # Or where your probe image resides
