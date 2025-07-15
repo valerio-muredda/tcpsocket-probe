@@ -24,7 +24,7 @@ spec:
               # IMPORTANT: Replace with your actual WebSocket service URL
               # Format: ws://<service-name>.<namespace>.svc.cluster.local:<port>/<path>
               # Example: ws://my-chat-app.my-project.svc.cluster.local:8080/websocket
-              value: "ws://https://tcpsocket-git-test.apps.cluster-fww8p.fww8p.sandbox788.opentlc.com:5000"
+              value: "ws://tcpsocket-git-test.apps.cluster-fww8p.fww8p.sandbox788.opentlc.com:5000"
             - name: INTERVAL
               value: "10" # Probe every 10 seconds
             - name: TIMEOUT
