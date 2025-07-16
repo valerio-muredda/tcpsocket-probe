@@ -4,8 +4,7 @@ FROM debian:stable-slim
 # Install websocat
 # Check websocat's GitHub releases for the latest pre-compiled binary for musl (Alpine)
 # Example: https://github.com/vi/websocat/releases
-RUN apt-get install curl -y \
-    && curl -LO https://github.com/vi/websocat/releases/download/v1.12.0/websocat.x86_64-unknown-linux-musl \
+RUN curl -LO https://github.com/vi/websocat/releases/download/v1.12.0/websocat.x86_64-unknown-linux-musl \
     && chmod +x websocat.x86_64-unknown-linux-musl \
     && mv websocat.x86_64-unknown-linux-musl /usr/local/bin/websocat
 
