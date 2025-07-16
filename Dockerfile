@@ -16,4 +16,4 @@ COPY websocket_probe.sh /usr/local/bin/websocket_probe.sh
 RUN chmod +x /usr/local/bin/websocket_probe.sh
 
 # Set default command to run the probe script
-CMD ["/usr/local/bin/websocket_probe.sh"]
+#CMD ["/usr/local/bin/websocket_probe.sh"]

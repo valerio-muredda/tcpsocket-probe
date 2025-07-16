@@ -43,5 +43,5 @@ spec:
       imageChange:
         from:
           kind: ImageStreamTag
-          name: websocket-probe:latest
+          name: websocket-probe-git:latest
           namespace: test # Or where your probe image resides
